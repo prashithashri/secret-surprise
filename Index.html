@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Message 💌</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffd6e7, #e8d9ff);
+      overflow: hidden;
+    }
+
+    .card {
+      width: 90%;
+      max-width: 400px;
+      padding: 35px 25px;
+      text-align: center;
+      background: rgba(255,255,255,0.9);
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      color: #d94f8a;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 14px 25px;
+      border: none;
+      border-radius: 30px;
+      background: #d94f8a;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    #message {
+      display: none;
+      margin-top: 25px;
+      padding: 20px;
+      background: #fff0f6;
+      border-radius: 18px;
+      color: #b83268;
+      line-height: 1.6;
+    }
+
+    .heart {
+      position: fixed;
+      font-size: 20px;
+      animation: float 5s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh);
+      }
+      to {
+        transform: translateY(-10vh);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <div style="font-size:50px;">💌</div>
+
+    <h1>A Secret Message</h1>
+
+    <p>Someone left a little surprise for you...</p>
+
+    <button onclick="openMessage()">Open the message 💗</button>
+
+    <div id="message">
+      <h2>✨ Surprise! ✨</h2>
+      <p>
+        You are someone truly special.  
+        I hope this little website made you smile today! 🥰
+      </p>
+      <p>💖 Have a beautiful day! 💖</p>
+    </div>
+  </div>
+
+  <script>
+    function openMessage() {
+      document.getElementById("message").style.display = "block";
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💗";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+
+    setInterval(createHeart, 500);
+  </script>
+
+</body>
+</html>
